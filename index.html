@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow Gardens Bot Kontrol</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Grow Gardens Bot Kontrol</h1>
+            <p>Discord botlarınızı tek panelden yönetin</p>
+        </header>
+        
+        <div class="bot-selector">
+            <button class="bot-btn active" data-bot="announcement">Duyuru Botu</button>
+            <button class="bot-btn" data-bot="self">Self Bot</button>
+        </div>
+        
+        <!-- Duyuru Botu -->
+        <div id="announcement-bot" class="bot-section active">
+            <h2>Duyuru Botu</h2>
+            
+            <div class="form-group">
+                <label for="announcement-token">Bot Tokeni:</label>
+                <input type="password" id="announcement-token" placeholder="Bot tokeninizi girin">
+            </div>
+            
+            <div class="form-group">
+                <label for="announcement-message">Duyuru Mesajı:</label>
+                <textarea id="announcement-message" placeholder="Gönderilecek mesajı yazın">.gg/grow-gardens</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Sunucu Seçimi:</label>
+                <div class="server-list" id="announcement-servers">
+                    <div class="server-card placeholder">
+                        <p>Token girip başlattıktan sonra sunucular burada görünecek</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Gönderim Seçenekleri:</label>
+                <div class="user-options">
+                    <div class="user-option">
+                        <input type="radio" id="send-all" name="send-to" value="all" checked>
+                        <label for="send-all">Tüm Üyelere</label>
+                    </div>
+                    <div class="user-option">
+                        <input type="radio" id="send-online" name="send-to" value="online">
+                        <label for="send-online">Sadece Online</label>
+                    </div>
+                    <div class="user-option">
+                        <input type="radio" id="send-offline" name="send-to" value="offline">
+                        <label for="send-offline">Sadece Offline</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="send-delay">Gönderim Aralığı (ms):</label>
+                <input type="number" id="send-delay" value="1000" min="500">
+            </div>
+            
+            <div class="form-group">
+                <button id="start-announcement" class="btn btn-primary">Başlat</button>
+                <button id="stop-announcement" class="btn btn-danger" disabled>Durdur</button>
+                <span id="announcement-status">
+                    <span class="status-indicator status-offline"></span>
+                    <span>Kapalı</span>
+                </span>
+            </div>
+            
+            <h3>Canlı Log</h3>
+            <div class="log-container" id="announcement-log">
+                <div class="log-entry">
+                    <span class="log-time">[00:00:00]</span> Sistem hazır. Token girip başlatabilirsiniz.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Self Bot -->
+        <div id="self-bot" class="bot-section">
+            <h2>Self Bot</h2>
+            
+            <div class="form-group">
+                <label for="self-token">Kullanıcı Tokeni:</label>
+                <input type="password" id="self-token" placeholder="Kullanıcı tokeninizi girin">
+                <small>Dikkat: Self botlar Discord ToS'a aykırıdır</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Kanal ID'leri (her satıra bir ID):</label>
+                <textarea id="channel-ids">1358536830269657343
+1365731632534917141
+1383717872760651889
+1358536830269657345
+1359979163443925154</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="self-message">Gönderilecek Mesaj:</label>
+                <textarea id="self-message">**DM = GET RACOON FREES **\n**DM = GET RACOON FREES **\n**DM = GET RACOON FREES **\nhttps://www.roblox.com/share?code=cd28f0d82f1e184e996ab2b48a271be5&type=Server</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="dm-response">DM Yanıtı:</label>
+                <input type="text" id="dm-response" value="https://discord.gg/59NC5UtS join and invite friends. later get your raccoon">
+            </div>
+            
+            <div class="form-group">
+                <button id="start-self" class="btn btn-primary">Başlat</button>
+                <button id="stop-self" class="btn btn-danger" disabled>Durdur</button>
+                <span id="self-status">
+                    <span class="status-indicator status-offline"></span>
+                    <span>Kapalı</span>
+                </span>
+            </div>
+            
+            <h3>Canlı Log</h3>
+            <div class="log-container" id="self-log">
+                <div class="log-entry">
+                    <span class="log-time">[00:00:00]</span> Sistem hazır. Token girip başlatabilirsiniz.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
